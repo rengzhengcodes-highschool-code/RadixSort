@@ -5,7 +5,11 @@ public class Radix {
 	}
 
 	public static int length (int n) {
-		return (int)Math.log10(n);
+		if (n == 0) {//Accounts for logbase(0) which is always undefined (returns POSITIVE_INFINITY in the function's case.
+			return 1;
+		} else {
+			return (int)Math.log10(n);
+		}
 	}
 
 	public static void merge (MyLinkedList original, MyLinkedList[] buckets) {
