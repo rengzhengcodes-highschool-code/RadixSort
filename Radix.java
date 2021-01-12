@@ -1,7 +1,7 @@
 public class Radix {
 
 	public static int nth (int n, int col) {
-		return (n / (int)Math.pow(10, col)) % 10;
+		return Math.abs((n / (int)Math.pow(10, col)) % 10);
 	}
 
 	public static int length (int n) {
