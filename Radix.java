@@ -8,7 +8,7 @@ public class Radix {
 		if (n == 0) {//Accounts for logbase(0) which is always undefined (returns POSITIVE_INFINITY in the function's case.
 			return 1;
 		} else {
-			return (int)Math.log10(Math.abs(n));//log10 isn't real on negative n.
+			return (int)(Math.log10(Math.abs(n)) + 1);//log10 isn't real on negative n.
 		}
 	}
 
