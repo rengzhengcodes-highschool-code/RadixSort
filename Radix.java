@@ -8,4 +8,10 @@ public class Radix {
 		return (int)Math.log10(n);
 	}
 
+	public static void merge (MyLinkedList original, MyLinkedList[] buckets) {
+		for (MyLinkedList bucket : buckets) {
+			original.extend(bucket);
+		}
+	}
+
 }
