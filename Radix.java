@@ -19,10 +19,18 @@ public class Radix {
 	}
 
 	public static void radixSortSimple(SortableLinkedList data) {
-		SortableLinkedList[] buckets = new SortableLinkedList[10];
-		for (SortableLinkedList bucket : buckets) {
-			bucket = new SortableLinkedList();
-		}
+		SortableLinkedList[] buckets = {
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+		};
 		int run = 0;
 		int runs = 1;
 
@@ -37,8 +45,7 @@ public class Radix {
 		merge(data, buckets);
 
 		for (; run < runs; run++) {
-			buckets = new SortableLinkedList[10];
-
+			//no need to declare new buckets because extend autoclears.
 			for (int index = 0; data.size() > 0;) {
 				int currentVal = data.remove(index);
 				buckets[nth(currentVal, run)].add(currentVal);//Adds the currentValue to the correct bucket.
@@ -49,14 +56,31 @@ public class Radix {
 	}
 
 	public static void radixSort (SortableLinkedList data) {
-		SortableLinkedList[] negativeBuckets = new SortableLinkedList[10];
-		SortableLinkedList[] positiveBuckets = new SortableLinkedList[10];
-		for (SortableLinkedList bucket : positiveBuckets) {
-			bucket = new SortableLinkedList();
-		}
-		for (SortableLinkedList bucket : negativeBuckets) {
-			bucket = new SortableLinkedList();
-		}
+		SortableLinkedList[] negativeBuckets = {
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+		};
+		SortableLinkedList[] positiveBuckets = {
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+			new SortableLinkedList(),
+		};
+
 		int run = 0;
 		int runs = 1;
 
@@ -76,9 +100,6 @@ public class Radix {
 		merge(data, positiveBuckets);
 
 		for (; run < runs; run++) {
-			positiveBuckets = new SortableLinkedList[10];
-			negativeBuckets = new SortableLinkedList[10];
-
 			for (int index = 0; data.size() > 0;) {
 				int currentVal = data.remove(index);
 
