@@ -46,6 +46,42 @@ public class Radix {
 	}
 
 	public static void radixSort (SortableLinkedList data) {
-		
+		SortableLinkedList[] positiveBuckets = new SortableLinkedList[10];
+		SortableLinkedList[] negativeBuckets = new SortableLinkedList[10];
+		int run = 0;
+		int runs = 1;
+
+		for (int index = 0; data.size() > 0;) {
+			int currentVal = data.remove(index);
+			runs = Math.max(length(currentVal), runs);
+
+			if (currentVal >= 0) {
+				positiveBuckets[nth(currentVal, run)].add(currentVal);//Adds the currentValue to the correct bucket.
+			} else {
+				negativeBuckets[9 - nth(currentVal, run)].add(currentVal);//9 - nth as negatives go in descending rder of last digit.
+			}
+		}
+
+		run++;
+		merge(data, negativeBuckets);
+		merge(data, positiveBuckets);
+
+		for (; run < runs; run++) {
+			positiveBuckets = new SortableLinkedList[10];
+			negativeBuckets = new SortableLinkedList[10];
+
+			for (int index = 0; data.size() > 0;) {
+				int currentVal = data.remove(index);
+
+				if (currentVal >= 0) {
+					positiveBuckets[nth(currentVal, run)].add(currentVal);//Adds the currentValue to the correct bucket.
+				} else {
+					negativeBuckets[9 - nth(currentVal, run)].add(currentVal);//9 - nth as negatives go in descending rder of last digit.
+				}
+			}
+
+			merge(data, negativeBuckets);
+			merge(data, positiveBuckets);
+		}
 	}
 }
