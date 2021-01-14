@@ -20,6 +20,9 @@ public class Radix {
 
 	public static void radixSortSimple(SortableLinkedList data) {
 		SortableLinkedList[] buckets = new SortableLinkedList[10];
+		for (SortableLinkedList bucket : buckets) {
+			bucket = new SortableLinkedList();
+		}
 		int run = 0;
 		int runs = 1;
 
@@ -46,8 +49,14 @@ public class Radix {
 	}
 
 	public static void radixSort (SortableLinkedList data) {
-		SortableLinkedList[] positiveBuckets = new SortableLinkedList[10];
 		SortableLinkedList[] negativeBuckets = new SortableLinkedList[10];
+		SortableLinkedList[] positiveBuckets = new SortableLinkedList[10];
+		for (SortableLinkedList bucket : positiveBuckets) {
+			bucket = new SortableLinkedList();
+		}
+		for (SortableLinkedList bucket : negativeBuckets) {
+			bucket = new SortableLinkedList();
+		}
 		int run = 0;
 		int runs = 1;
 
