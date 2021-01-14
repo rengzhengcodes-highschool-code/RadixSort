@@ -19,18 +19,10 @@ public class Radix {
 	}
 
 	public static void radixSortSimple(SortableLinkedList data) {
-		SortableLinkedList[] buckets = {
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-		};
+		SortableLinkedList[] buckets = new SortableLinkedList[10];
+		for (int bucket = 0; bucket < buckets.length; bucket++) {
+			buckets[bucket] = new SortableLinkedList();
+		}
 		int run = 0;
 		int runs = 1;
 
@@ -56,30 +48,14 @@ public class Radix {
 	}
 
 	public static void radixSort (SortableLinkedList data) {
-		SortableLinkedList[] negativeBuckets = {
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-		};
-		SortableLinkedList[] positiveBuckets = {
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-			new SortableLinkedList(),
-		};
+		SortableLinkedList[] negativeBuckets = new SortableLinkedList[10];
+		for (int bucket = 0; bucket < negativeBuckets.length; bucket++) {
+			negativeBuckets[bucket] = new SortableLinkedList();
+		}
+		SortableLinkedList[] positiveBuckets = new SortableLinkedList[10];
+		for (int bucket = 0; bucket < positiveBuckets.length; bucket++) {
+			positiveBuckets[bucket] = new SortableLinkedList();
+		}
 
 		int run = 0;
 		int runs = 1;
