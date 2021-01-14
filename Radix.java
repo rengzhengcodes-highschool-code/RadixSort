@@ -19,7 +19,30 @@ public class Radix {
 	}
 
 	public static void radixSortSimple(SortableLinkedList data) {
-		
+		SortableLinkedList[] buckets = new SortableLinkedList[10];
+		int run = 0;
+		int runs = 1;
+
+		for (int index = 0; data.size() > 0;) {
+			int currentVal = data.remove(index);
+			runs = Math.max(length(currentVal), runs);
+
+			buckets[nth(currentVal, run)].add(currentVal);//Adds the currentValue to the correct bucket.
+		}
+
+		run++;
+		merge(data, buckets);
+
+		for (; run < runs; run++) {
+			buckets = new SortableLinkedList[10];
+
+			for (int index = 0; data.size() > 0;) {
+				int currentVal = data.remove(index);
+				buckets[nth(currentVal, run)].add(currentVal);//Adds the currentValue to the correct bucket.
+			}
+
+			merge(data, buckets);
+		}
 	}
 
 }
